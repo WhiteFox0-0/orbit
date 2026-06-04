@@ -1,12 +1,11 @@
-import { z } from 'zod';
 import { baseProcedure, createTRPCRouter } from '@/trpc/init';
 import prisma from "@/lib/db"
 
 export const appRouter = createTRPCRouter({
   getUser: baseProcedure
-    .query((opts) => {
-      return  
-  ),
+    .query(() => {
+      return prisma.user.findMany();
+    }),
 });
 
 // export type definition of API

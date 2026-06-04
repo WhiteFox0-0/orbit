@@ -1,8 +1,11 @@
-import prisma from "@/lib/db"
+"use client";
 
-async function page() {
+import { useTRPC } from "@/trpc/client"
+import { useQuery } from "@tanstack/react-query";
 
-  const users = await prisma.user.findMany();
+function page() {
+  const trpc = useTRPC();
+  const { data: users } = useQuery(trpc.getUser.queryOptions());
 
   return (
     <div className="flex justify-center">

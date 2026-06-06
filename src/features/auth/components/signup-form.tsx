@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -221,9 +221,23 @@ export function SignupForm() {
 
         <div className="space-y-2">
           <Button type="button" variant="outline" className="w-full">
+            <Image
+              src="/logos/github-icon.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
             Continue with GitHub
           </Button>
           <Button type="button" variant="outline" className="w-full">
+            <Image
+              src="/logos/google-icon.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
             Continue with Google
           </Button>
         </div>

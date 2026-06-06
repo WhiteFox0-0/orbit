@@ -5,12 +5,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldLabel, FieldError, FieldDescription } from "@/components/ui/field";
+import {
+  Field,
+  FieldLabel,
+  FieldError,
+  FieldDescription,
+} from "@/components/ui/field";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -48,12 +58,11 @@ export function LoginForm() {
           router.push("/");
         },
         onError: (ctx) => {
-          toast.error(ctx.error.message)
-        }
-
+          toast.error(ctx.error.message);
+        },
       }
-    )
-  }
+    );
+  };
 
   const isPending = form.formState.isSubmitting;
 
@@ -71,8 +80,16 @@ export function LoginForm() {
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                <Input {...field} id={field.name} type="email" placeholder="john@example.com" aria-invalid={fieldState.invalid} />
-                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                <Input
+                  {...field}
+                  id={field.name}
+                  type="email"
+                  placeholder="john@example.com"
+                  aria-invalid={fieldState.invalid}
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
           />
@@ -100,12 +117,18 @@ export function LoginForm() {
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
-                <FieldDescription>Must be at least 8 characters</FieldDescription>
-                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                <FieldDescription>
+                  Must be at least 8 characters
+                </FieldDescription>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
           />
-          <Button type="submit" className="w-full h-8">Create account</Button>
+          <Button type="submit" className="w-full">
+            Create account
+          </Button>
         </form>
 
         <div className="relative my-4">
@@ -118,19 +141,37 @@ export function LoginForm() {
         </div>
 
         <div className="space-y-2">
-          <Button type="button" variant="outline" className="w-full h-8">
+          <Button type="button" variant="outline" className="w-full">
+            <Image
+              src="/logos/github-icon.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
             Continue with GitHub
           </Button>
-          <Button type="button" variant="outline" className="w-full h-8">
+          <Button type="button" variant="outline" className="w-full">
+            <Image
+              src="/logos/google-icon.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="mr-2"
+            />
             Continue with Google
           </Button>
         </div>
 
         <p className="text-center text-sm text-muted-foreground pt-4">
           Dont&apos;t have an account?{" "}
-          <Link href={"/signup"} className="text-foreground underline underline-offset-4 cursor-pointer">Sign up</Link>
+          <Link
+            href={"/signup"}
+            className="text-foreground underline underline-offset-4 cursor-pointer"
+          >
+            Sign up
+          </Link>
         </p>
-
       </CardContent>
     </Card>
   );

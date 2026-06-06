@@ -4,6 +4,7 @@ import { useTRPC } from "@/trpc/client"
 import { useQuery } from "@tanstack/react-query";
 
 function page() {
+
   const trpc = useTRPC();
   const { data: users } = useQuery(trpc.getUser.queryOptions());
 

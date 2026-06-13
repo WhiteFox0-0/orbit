@@ -59,7 +59,7 @@ export const AppSidebar = () => {
         <SidebarMenuItem>
           <SidebarMenuButton asChild className="gap-x-4 h-10 px-4">
             <Link href="/" prefetch>
-              <Image src="/logos/logo-dark.png" alt="Nodebase" width={30} height={30} />
+              <Image src="/logos/logo-dark.png" alt="Orbit" width={30} height={30} />
               <span className="font-semibold text-sm">Orbit</span>
             </Link>
           </SidebarMenuButton>
@@ -77,7 +77,7 @@ export const AppSidebar = () => {
                       isActive={
                         item.url === "/"
                           ? pathname === "/"
-                          : pathname.startsWith(item.url)
+                          : pathname === item.url || pathname.startsWith(`${item.url}/`)
                       }
                       asChild
                       className="gap-x-4 h-10 px-4"

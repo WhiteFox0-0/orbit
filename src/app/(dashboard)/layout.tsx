@@ -1,16 +1,20 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-
-  return <>
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset className="bg-accent/20">
-        {children}
-      </SidebarInset>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
-  </>
+  );
 }
-
-export default Layout

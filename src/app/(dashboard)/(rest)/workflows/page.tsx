@@ -1,5 +1,5 @@
-const Page = () => {
-  return <p>Workflow</p>
-}
+"use client";
 
-export default Page
+export default function WorkflowsPage() {
+  return <div>workflows</div>;
+}

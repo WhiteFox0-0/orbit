@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { TRPCReactProvider } from "@/trpc/client";
 import { Toaster } from "sonner";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +30,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "dark",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        geist.variable
+      )}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         <TRPCReactProvider>
           {children}
           <Toaster />
         </TRPCReactProvider>
-
       </body>
     </html>
   );

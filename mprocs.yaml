@@ -4,3 +4,6 @@ procs:
 
   inngest:
     shell: "npx inngest-cli@latest dev"
+
+  prisma:
+    shell: "npx prisma studio"

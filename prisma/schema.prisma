@@ -77,8 +77,9 @@ model Verification {
 }
 
 model Workflow {
-  id     String  @id @default(cuid())
-  name   String
-  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String?
+  id        String   @id @default(cuid())
+  name      String
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?
+  updatedAt DateTime @updatedAt
 }

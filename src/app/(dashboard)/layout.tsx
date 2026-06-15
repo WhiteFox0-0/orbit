@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>{children}</SidebarInset>
+      <SidebarInset className="bg-background">{children}</SidebarInset>
     </SidebarProvider>
   );
 }

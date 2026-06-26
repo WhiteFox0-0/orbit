@@ -10,15 +10,14 @@ import {
   EntityPagination,
   EntitySearch,
   ErrorView,
-  LoadingView
+  LoadingView,
 } from "@/components/entity-component";
-import { useSuspenseWorkflow, useWorkflow } from "../hooks/use-workflow"
+import { useSuspenseWorkflows, useCreateWorkflow } from "../hooks/use-workflow";
 import { useEntitySearch } from "@/hooks/use-entity-search";
 import type { Workflow } from "@/generated/prisma/client";
 import { WorkflowIcon } from "lucide-react";
 import { useWorkflowParams } from "../hooks/use-workflows-param";
 import { toast } from "sonner";
-
 
 export const WorkflowsSearch = () => {
   const [params, setParams] = useWorkflowParams();
@@ -37,7 +36,7 @@ export const WorkflowsSearch = () => {
 };
 
 export const WorkflowList = () => {
-  const workflows = useSuspenseWorkflow();
+  const workflows = useSuspenseWorkflows();
 
   return (
     <EntityList
@@ -46,12 +45,11 @@ export const WorkflowList = () => {
       renderItem={(workflow) => <WorkflowItem data={workflow} />}
       emptyView={<WorkflowsEmpty />}
     />
-  )
-
+  );
 };
 
 export const WorkflowHeader = ({ disabled }: { disabled?: boolean }) => {
-  const workflows = useWorkflow();
+  const workflows = useCreateWorkflow();
 
   const handleNewWorkflow = () => {
     workflows.mutate(undefined, {
@@ -76,7 +74,7 @@ export const WorkflowHeader = ({ disabled }: { disabled?: boolean }) => {
 };
 
 export const WorkflowsPagination = () => {
-  const workflows = useSuspenseWorkflow();
+  const workflows = useSuspenseWorkflows();
   const [params, setParams] = useWorkflowParams();
 
   return (
@@ -88,7 +86,6 @@ export const WorkflowsPagination = () => {
     />
   );
 };
-
 
 export const WorkflowsContainer = ({
   children,
@@ -107,15 +104,15 @@ export const WorkflowsContainer = ({
 };
 
 export const WrokflowsLoading = () => {
-  return <LoadingView message="Loading workflows..." />
-}
+  return <LoadingView message="Loading workflows..." />;
+};
 
 export const WorkflowsError = () => {
   return <ErrorView message="Error loading workflows" />;
 };
 
 export const WorkflowsEmpty = () => {
-  const workflows = useWorkflow();
+  const workflows = useCreateWorkflow();
 
   const handleNewWorkflow = () => {
     workflows.mutate(undefined, {
@@ -123,8 +120,7 @@ export const WorkflowsEmpty = () => {
         toast.error(`Failed to create workflow: ${error.message}`);
       },
     });
-  }
-
+  };
 
   return (
     <>
@@ -136,15 +132,8 @@ export const WorkflowsEmpty = () => {
   );
 };
 
-
-export const WorkflowItem = ({
-  data,
-}: {
-  data: Workflow
-}) => {
-
-  const handleRemove = () => {
-  }
+export const WorkflowItem = ({ data }: { data: Workflow }) => {
+  const handleRemove = () => {};
 
   return (
     <EntityItem
@@ -163,5 +152,5 @@ export const WorkflowItem = ({
       }
       onRemove={handleRemove}
     />
-  )
-}
+  );
+};

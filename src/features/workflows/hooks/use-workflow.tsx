@@ -12,6 +12,8 @@ export const useSuspenseWorkflow = () => {
   const trpc = useTRPC();
   const [params] = useWorkflowParams()
 
+  console.log(params)
+
   return useSuspenseQuery(trpc.workflows.getMany.queryOptions(params));
 };
 

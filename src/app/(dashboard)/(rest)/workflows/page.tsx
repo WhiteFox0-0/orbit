@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import {
   WorkflowList,
   WorkflowsContainer,
+  WorkflowsError,
+  WrokflowsLoading,
 } from "@/features/workflows/components/workflows";
 import { SearchParams } from "nuqs";
 import { workflowParamsLoader } from "@/features/workflows/server/params-loader";
@@ -24,8 +26,8 @@ export default async function WorkflowsPage({ searchParams }: Props) {
   return (
     <WorkflowsContainer>
       <HydrateClient>
-        <ErrorBoundary fallback={<p>Error!</p>}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <ErrorBoundary fallback={<WorkflowsError />}>
+          <Suspense fallback={<WrokflowsLoading />}>
             <WorkflowList />
           </Suspense>
         </ErrorBoundary>

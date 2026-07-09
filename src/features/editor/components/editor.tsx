@@ -15,6 +15,7 @@ import {
   Controls,
   MiniMap,
   Panel,
+  BackgroundVariant,
 } from "@xyflow/react";
 import { ErrorView, LoadingView } from "@/components/entity-component";
 import { useSuspenseWorkflow } from "@/features/workflows/hooks/use-workflow";
@@ -46,17 +47,17 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
       setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
-    [],
+    []
   );
   const onEdgesChange = useCallback(
     (changes: EdgeChange[]) =>
       setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
-    [],
+    []
   );
   const onConnect = useCallback(
     (params: Connection) =>
       setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot)),
-    [],
+    []
   );
 
   const hasManualTrigger = useMemo(() => {
@@ -81,7 +82,12 @@ export const Editor = ({ workflowId }: { workflowId: string }) => {
         panOnDrag={false}
         selectionOnDrag
       >
-        <Background />
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={20}
+          size={1.5}
+          color="rgba(120, 120, 120, 0.20)"
+        />
         <Panel position="top-right">
           <AddNodeButton />
         </Panel>

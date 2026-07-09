@@ -55,9 +55,11 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
+  Credential: 'Credential',
   Workflow: 'Workflow',
   Node: 'Node',
-  Connection: 'Connection'
+  Connection: 'Connection',
+  Execution: 'Execution'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -134,6 +136,19 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
+export const CredentialScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  value: 'value',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+} as const
+
+export type CredentialScalarFieldEnum = (typeof CredentialScalarFieldEnum)[keyof typeof CredentialScalarFieldEnum]
+
+
 export const WorkflowScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -152,6 +167,7 @@ export const NodeScalarFieldEnum = {
   type: 'type',
   position: 'position',
   data: 'data',
+  credentialId: 'credentialId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -173,6 +189,21 @@ export const ConnectionScalarFieldEnum = {
 export type ConnectionScalarFieldEnum = (typeof ConnectionScalarFieldEnum)[keyof typeof ConnectionScalarFieldEnum]
 
 
+export const ExecutionScalarFieldEnum = {
+  id: 'id',
+  workflowId: 'workflowId',
+  status: 'status',
+  error: 'error',
+  errorStack: 'errorStack',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  inngestEventId: 'inngestEventId',
+  output: 'output'
+} as const
+
+export type ExecutionScalarFieldEnum = (typeof ExecutionScalarFieldEnum)[keyof typeof ExecutionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -186,6 +217,14 @@ export const JsonNullValueInput = {
 } as const
 
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {

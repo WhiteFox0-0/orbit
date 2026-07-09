@@ -12,7 +12,11 @@ import {
   ErrorView,
   LoadingView,
 } from "@/components/entity-component";
-import { useSuspenseWorkflows, useCreateWorkflow } from "../hooks/use-workflow";
+import {
+  useSuspenseWorkflows,
+  useCreateWorkflow,
+  useRemoveWorkflow,
+} from "../hooks/use-workflow";
 import { useEntitySearch } from "@/hooks/use-entity-search";
 import type { Workflow } from "@/generated/prisma/client";
 import { WorkflowIcon } from "lucide-react";
@@ -133,7 +137,11 @@ export const WorkflowsEmpty = () => {
 };
 
 export const WorkflowItem = ({ data }: { data: Workflow }) => {
-  const handleRemove = () => {};
+  const removeWorkflow = useRemoveWorkflow();
+
+  const handleRemove = () => {
+    removeWorkflow.mutate({ id: data.id });
+  };
 
   return (
     <EntityItem

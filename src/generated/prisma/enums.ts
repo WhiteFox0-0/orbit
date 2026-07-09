@@ -9,6 +9,15 @@
 * 🟢 You can import this file directly.
 */
 
+export const CredentialType = {
+  OPENAI: 'OPENAI',
+  ANTHROPIC: 'ANTHROPIC',
+  GEMINI: 'GEMINI'
+} as const
+
+export type CredentialType = (typeof CredentialType)[keyof typeof CredentialType]
+
+
 export const NodeType = {
   INITIAL: 'INITIAL',
   MANUAL_TRIGGER: 'MANUAL_TRIGGER',
@@ -23,3 +32,12 @@ export const NodeType = {
 } as const
 
 export type NodeType = (typeof NodeType)[keyof typeof NodeType]
+
+
+export const ExecutionStatus = {
+  RUNNING: 'RUNNING',
+  SUCCESS: 'SUCCESS',
+  FAILED: 'FAILED'
+} as const
+
+export type ExecutionStatus = (typeof ExecutionStatus)[keyof typeof ExecutionStatus]

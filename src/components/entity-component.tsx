@@ -2,7 +2,15 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-import { AlertTriangleIcon, Loader2Icon, MoreVerticalIcon, PackageOpenIcon, PlusIcon, SearchIcon, TrashIcon } from "lucide-react";
+import {
+  AlertTriangleIcon,
+  Loader2Icon,
+  MoreVerticalIcon,
+  PackageOpenIcon,
+  PlusIcon,
+  SearchIcon,
+  TrashIcon,
+} from "lucide-react";
 import {
   Empty,
   EmptyContent,
@@ -12,12 +20,7 @@ import {
   EmptyTitle,
 } from "./ui/empty";
 import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,10 +35,10 @@ type EntityHeaderProps = {
   disabled?: boolean;
   isCreating?: boolean;
 } & (
-    | { onNew: () => void; newButtonHref?: never }
-    | { newButtonHref?: string; onNew: never }
-    | { onNew?: never; newButtonHref?: never }
-  );
+  | { onNew: () => void; newButtonHref?: never }
+  | { newButtonHref: string; onNew?: never }
+  | { onNew?: never; newButtonHref?: never }
+);
 
 type EntityContainerProps = {
   children: React.ReactNode;
@@ -132,7 +135,7 @@ interface EntityPaginationProps {
   totalPages: number;
   onPageChange: (page: number) => void;
   disabled?: boolean;
-};
+}
 
 export const EntityPagination = ({
   page,
@@ -164,9 +167,8 @@ export const EntityPagination = ({
         </Button>
       </div>
     </div>
-  )
+  );
 };
-
 
 interface StateViewProps {
   message?: string;
@@ -176,54 +178,37 @@ export const LoadingView = ({ message }: StateViewProps) => {
   return (
     <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4">
       <Loader2Icon className="size-6 animate-spin text-muted-foreground" />
-      {!!message && (<p className="text-sm text-muted-foreground">{message}</p>)}
+      {!!message && <p className="text-sm text-muted-foreground">{message}</p>}
     </div>
-  )
-}
+  );
+};
 
-export const ErrorView = ({
-  message,
-}: StateViewProps) => {
+export const ErrorView = ({ message }: StateViewProps) => {
   return (
     <div className="flex justify-center items-center h-full flex-1 flex-col gap-y-4">
       <AlertTriangleIcon className="size-6 text-primary" />
-      {!!message && (
-        <p className="text-sm text-muted-foreground">
-          {message}
-        </p>
-      )}
+      {!!message && <p className="text-sm text-muted-foreground">{message}</p>}
     </div>
   );
 };
 
 interface EmptyViewProps extends StateViewProps {
   onNew?: () => void;
-};
+}
 
-export const EmptyView = ({
-  message,
-  onNew
-}: EmptyViewProps) => {
+export const EmptyView = ({ message, onNew }: EmptyViewProps) => {
   return (
-    <Empty className="border border-dashed bg-background">
+    <Empty>
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <PackageOpenIcon />
         </EmptyMedia>
       </EmptyHeader>
-      <EmptyTitle>
-        No items
-      </EmptyTitle>
-      {!!message && (
-        <EmptyDescription>
-          {message}
-        </EmptyDescription>
-      )}
+      <EmptyTitle>No items</EmptyTitle>
+      {!!message && <EmptyDescription>{message}</EmptyDescription>}
       {!!onNew && (
         <EmptyContent>
-          <Button onClick={onNew}>
-            Add item
-          </Button>
+          <Button onClick={onNew}>Add item</Button>
         </EmptyContent>
       )}
     </Empty>
@@ -236,7 +221,7 @@ interface EntityListProps<T> {
   getKey?: (item: T, index: number) => string | number;
   emptyView?: React.ReactNode;
   className?: string;
-};
+}
 
 export function EntityList<T>({
   items,
@@ -254,10 +239,7 @@ export function EntityList<T>({
   }
 
   return (
-    <div className={cn(
-      "flex flex-col gap-y-4",
-      className,
-    )}>
+    <div className={cn("flex flex-col gap-y-4", className)}>
       {items.map((item, index) => (
         <div key={getKey ? getKey(item, index) : index}>
           {renderItem(item, index)}
@@ -265,7 +247,7 @@ export function EntityList<T>({
       ))}
     </div>
   );
-};
+}
 
 interface EntityItemProps {
   href: string;
@@ -276,7 +258,7 @@ interface EntityItemProps {
   onRemove?: () => void | Promise<void>;
   isRemoving?: boolean;
   className?: string;
-};
+}
 
 export const EntityItem = ({
   href,
@@ -299,7 +281,7 @@ export const EntityItem = ({
     if (onRemove) {
       await onRemove();
     }
-  }
+  };
 
   return (
     <Link href={href} prefetch>
@@ -307,16 +289,14 @@ export const EntityItem = ({
         className={cn(
           "p-4 shadow-none hover:shadow cursor-pointer",
           isRemoving && "opacity-50 cursor-not-allowed",
-          className,
+          className
         )}
       >
         <CardContent className="flex flex-row items-center justify-between p-0">
           <div className="flex items-center gap-3">
             {image}
             <div>
-              <CardTitle className="text-base font-medium">
-                {title}
-              </CardTitle>
+              <CardTitle className="text-base font-medium">{title}</CardTitle>
               {!!subtitle && (
                 <CardDescription className="text-xs">
                   {subtitle}
@@ -354,5 +334,5 @@ export const EntityItem = ({
         </CardContent>
       </Card>
     </Link>
-  )
+  );
 };

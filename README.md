@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orbit
 
-## Getting Started
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8de1a244-3fe4-434b-89a9-0968c4284015" alt="Orbit Banner" width="100%" />
+</p>
 
-First, run the development server:
+<p align="center">
+  <strong>An open-source workflow automation platform.</strong>
+</p>
+
+<p align="center">
+  Build AI-powered workflows, connect APIs, automate repetitive tasks, and create powerful integrations with an intuitive visual editor.
+</p>
+
+---
+
+## ✨ Features
+
+- 🎨 Visual drag-and-drop workflow editor
+- 🔗 Connect nodes with an interactive flow builder
+- 🤖 AI integrations (OpenAI, Anthropic, Gemini)
+- 🌐 HTTP Request node
+- 🚀 Manual and Trigger nodes
+- 🔐 Secure credential management
+- 📊 Workflow execution history
+- ⚡ Real-time workflow editing
+- 💾 PostgreSQL + Prisma
+- 🔑 Authentication
+- 📱 Responsive interface
+
+---
+
+## 📸 Screenshots
+
+### Workflow Editor
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/61679fb4-1d18-4ac9-9fe2-4ffae884d642" width="100%" />
+</p>
+
+### Node Selector
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c75065c0-6876-4dcb-a6da-7d2f12f35479" width="100%" />
+</p>
+
+### Home Page
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0ec560ab-d329-4e04-8e1d-c82ba4de7a26" width="100%" />
+</p>
+
+
+### SignIn
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/54b918ed-2fe6-427f-b45f-8076e38b906c" width="100%" />
+</p>
+
+
+---
+
+## 🏗️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Frontend | Next.js, React, TypeScript |
+| Styling | Tailwind CSS, shadcn/ui |
+| Workflow Editor | React Flow |
+| Backend | tRPC |
+| Database | PostgreSQL, Prisma |
+| Authentication | Better Auth |
+| Validation | Zod |
+| State | TanStack Query |
+| Background Jobs | Inngest |
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/orbit.git
+cd orbit
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Configure environment
+
+Create a `.env` file.
+
+```env
+DATABASE_URL=
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
+```
+
+### Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### Run migrations
+
+```bash
+npx prisma migrate dev
+```
+
+### Start development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+├── components/
+├── features/
+├── server/
+├── generated/
+├── lib/
+└── hooks/
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🤖 Supported Nodes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Initial
+- Manual Trigger
+- HTTP Request
+- OpenAI
+- Anthropic
+- Gemini
+- Discord
+- Slack
+- Google Forms Trigger
+- Stripe Trigger
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📖 Roadmap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Conditional nodes
+- [ ] Loop node
+- [ ] Code node
+- [ ] Webhook trigger
+- [ ] Schedule trigger
+- [ ] Variables
+- [ ] Sub workflows
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📄 License
+
+MIT License.
+
+---
+
+<p align="center">
+Made with ❤️ using Next.js, React Flow and Prisma.
+</p>

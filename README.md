@@ -14,22 +14,6 @@
 
 ---
 
-## ✨ Features
-
-- 🎨 Visual drag-and-drop workflow editor
-- 🔗 Connect nodes with an interactive flow builder
-- 🤖 AI integrations (OpenAI, Anthropic, Gemini)
-- 🌐 HTTP Request node
-- 🚀 Manual and Trigger nodes
-- 🔐 Secure credential management
-- 📊 Workflow execution history
-- ⚡ Real-time workflow editing
-- 💾 PostgreSQL + Prisma
-- 🔑 Authentication
-- 📱 Responsive interface
-
----
-
 ## 📸 Screenshots
 
 ### Workflow Editor
@@ -57,6 +41,21 @@
   <img src="https://github.com/user-attachments/assets/54b918ed-2fe6-427f-b45f-8076e38b906c" width="100%" />
 </p>
 
+---
+
+## ✨ Features
+
+- 🎨 Visual drag-and-drop workflow editor
+- 🔗 Connect nodes with an interactive flow builder
+- 🤖 AI integrations (OpenAI, Anthropic, Gemini)
+- 🌐 HTTP Request node
+- 🚀 Manual and Trigger nodes
+- 🔐 Secure credential management
+- 📊 Workflow execution history
+- ⚡ Real-time workflow editing
+- 💾 PostgreSQL + Prisma
+- 🔑 Authentication
+- 📱 Responsive interface
 
 ---
 
